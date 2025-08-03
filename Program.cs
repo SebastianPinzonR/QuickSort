@@ -14,6 +14,10 @@ class Program
 
         miLista.Transversa();
 
+        QuickSort(0, miLista.Cantidad() - 1);
+
+        miLista.Transversa();
+
     }
 
     private static void Swap(double indice1, double indice2)
@@ -51,7 +55,7 @@ class Program
             }
         }
 
-        //Hacemos el Swap final para colocar el pivote donde corresponde
+        //Hacemos el Swap final para colocar el pivote donde corresponde 
         Swap(indicePivote,parametroFin);
         //Regresamos el indice del pivote
         return indicePivote;
@@ -59,6 +63,16 @@ class Program
 
     public static void QuickSort(double pInicio, double pFin)
     {
-
+        double indicePivote = 0;
+        //Caso base, un elemento o fragmento invalido
+        if(pInicio >= pFin)
+        {
+            return;
+        }
+        //Obtenemos el indice del pivote para el fragmento con el que trabajamos
+        indicePivote=Particion(pInicio, pFin);
+        //Casos inductivos
+        QuickSort(pInicio, indicePivote-1);
+        QuickSort(indicePivote+1, pFin);
     }
 }
